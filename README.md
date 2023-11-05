@@ -1,13 +1,16 @@
-# COSC75 WEB DEVELOPMENT
-A group project intended for system evaluation. Developed by CS3B B2023-2024 for COSC75 requirement. Purposely academic.
+# PyShop
+
+PyShop is an online Python Ecommerce website built with Django, SQLite and Bootstrap. A simple and lightweight ecommerce app easily deployable anywhere anytime with modules developed upon the inbuilt django admin.
+
+<p align="center"><img src="/pyshop-app.png"></p>
 
 
 # Get Started
-__To setup locally, follow these guidelines:__
+To setup the PyShop project, here is the following guidelines:
 * Clone the repository <code>git clone https://github.com/thisishaykins/PyShop.git</code>
 * Open Project folder on terminal 
 * Prepare your virtual environment <code>python3 -m venv venv</code> 
-* Activate your virtual environment > Windows: <code>source venv/Scripts/activate</code> | MacOS : <code>source venv/bin/activate</code>
+* Activate your virtual environment <code>source env/bin/activate</code>
 * Install your requirements.txt file <code>pip install -r requirements.txt</code>
 * Create migrations using <code>python3 manage.py makemigrations</code> 
 * Run migrations <code>python3 manage.py migrate</code>
@@ -19,7 +22,16 @@ __To setup locally, follow these guidelines:__
 * Add Products under the <b>Products</b> Menu, Add Offers also.
 * Visit Products Page using <code>http://127.0.0.1:8000/products/</code>
 * Visit New Arrival (Products) Page using <code>http://127.0.0.1:8000/products/new</code>
+* Wish to extend codebase/project? just say hi
 
 
+## Contributing
+Thank you for considering contributing to this small python project! For contribution discuss, please email to Akinshola Samuel [akinsholasamuel@gmail.com](mailto:akinsholasamuel@gmail.com).
 
-> Project fork from [Akinshola Samuel AKINDE's PyShop](https://github.com/thisishaykins/PyShop?fbclid=IwAR2gI0fokCIaXavmbhuHQK9RJ9RX1tAvfLN3k7f2L1j88Fr3DbvIwViI0bE). Usin the project as a template and a starting gound while building toward our main requirements.
+
+## Security Vulnerabilities
+If you discover a vulnerability or bugs within this project, please send an e-mail to Akinshola Samuel via [akinsholasamuel@gmail.com](mailto:akinsholasamuel@gmail.com). All bugs and vulnerabilities will be promptly addressed.
+
+
+## License
+The PyShop Project is free open-sourced project, yet to be licensed under the [MIT license](https://opensource.org/licenses/MIT).
