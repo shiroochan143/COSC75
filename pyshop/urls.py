@@ -29,7 +29,8 @@ urlpatterns = [
     path('collections/<str:slug>', views.view_collections, name="view_collections"),
     path('collections/<str:category_slug>/<str:product_slug>', views.view_products, name='view_products'),
     path('register/', authview.register, name="register"),
-    path('login/', authview.loginpage, name="loginpage")
+    path('login/', authview.loginpage, name="loginpage"),
+    path('logout/', authview.logoutpage, name="logout"),
 ]
 
 
