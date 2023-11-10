@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    console.log("Jquery loaded successfully")
     $('.increment-btn').click(function (e) {
         e.preventDefault();
 
@@ -14,6 +14,7 @@ $(document).ready(function () {
     });
 
     $('.decrement-btn').click(function (e) {
+        alert("button is clicked");
         e.preventDefault();
 
         var inc_value = $(this).closest('.product_data').find('.qty-input');
@@ -25,4 +26,8 @@ $(document).ready(function () {
             inc_value.val(value);
         }
     });
+    
+
 });
+
+
