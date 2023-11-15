@@ -31,12 +31,9 @@ urlpatterns = [
     path('register/', authview.register, name="register"),
     path('login/', authview.loginpage, name="loginpage"),
     path('logout/', authview.logoutpage, name="logout"),
-<<<<<<< Updated upstream
     path('add-to-cart/', cart.addtocart, name="addtocart" ),
     path('cart/', cart.viewcart, name="cart"),
-=======
     path('home/',views.home, name='home')
->>>>>>> Stashed changes
 ]
 
 
