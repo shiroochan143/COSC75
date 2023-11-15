@@ -137,5 +137,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = ["C:\\Users\\Zyruz\\Github Projects\\COSC_75_Shopping\\static"]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
+APPEND_SLASH = False
+#admin
 #username: zyruz
 #password: 143zzy143
+
+#user
+#username: zyruz123
+#password: cyberpunk2077

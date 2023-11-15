@@ -40,13 +40,16 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/products">Products</a>
+            <a class="nav-link {% if request.resolver_match.url_name == "collections" %}active{%endif%}" href="{% url 'collections'%}">Shop</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/products/new">New Arrivals</a>
           </li>
           <li class="nav-item">
-            <a class = "nav-link active" aria-current="page" href="{% url 'cart' %}"> Cart
+            <a class = "nav-link {% if request.resolver_match.url_name == "cart" %}active{%endif%}" aria-current="page" href="{% url 'cart' %}"> Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class = "nav-link {% if request.resolver_match.url_name == "wishlist" %}active{%endif%}" aria-current="page" href="{% url 'wishlist' %}"> Wishlist</a>
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item dropdown">

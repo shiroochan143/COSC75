@@ -20,19 +20,30 @@ from products import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from products.controller import authview, cart
+from products.controller import authview, cart, wishlist, checkout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('products/', include('products.urls')),
-    path('collections', views.collections, name="collections"),
+    path('collections/', views.collections, name="collections"),
     path('collections/<str:slug>', views.view_collections, name="view_collections"),
     path('collections/<str:category_slug>/<str:product_slug>', views.view_products, name='view_products'),
+    
     path('register/', authview.register, name="register"),
     path('login/', authview.loginpage, name="loginpage"),
     path('logout/', authview.logoutpage, name="logout"),
+    
     path('add-to-cart/', cart.addtocart, name="addtocart" ),
     path('cart/', cart.viewcart, name="cart"),
+    path('update-cart/', cart.updatecart, name = "updatecart"),
+    path('remove-cart-item/', cart.removecartitem, name="removecartitem"),
+    
+    path('wishlist/', wishlist.index, name="wishlist"),
+    path('add-to-wishlist/', wishlist.addtowishlist, name="addtowishlist"),
+    path('delete-wishlist-item/', wishlist.deletewishlistitem, name="deletewishlistitem"),
+    
+    path('checkout/', checkout.index, name="checkout"),
 ]
 
 

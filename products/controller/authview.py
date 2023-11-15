@@ -11,14 +11,14 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Registered successfully! Login to continue")
-            return redirect('/login')
+            return redirect('loginpage')
     context = {'form' : form}
     return render(request, "auth/register.html", context)
 
 def loginpage(request):
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged in.")
-        return redirect('/collections')
+        return redirect('loginpage')
     else:
         if request.method == "POST":
             name = request.POST.get('username')
@@ -29,14 +29,14 @@ def loginpage(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, "Login Successful, Welcome!")
-                return redirect('/collections')
+                return redirect('collections')
             else:
                 messages.error(request, "Invalid Username or Password. Please try again!")
-                return redirect('/login')
+                return redirect('loginpage')
     return render(request, "auth/login.html")
 
 def logoutpage(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, "Logged Out Successfully!")
-    return redirect('/login')
+    return redirect('loginpage')
