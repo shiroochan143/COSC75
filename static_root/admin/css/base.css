@@ -15,7 +15,7 @@ html[data-theme="light"],
     --body-quiet-color: #666;
     --body-loud-color: #000;
 
-    --header-color: #ffc;
+    --header-color: rgb(255, 255, 255);
     --header-branding-color: var(--accent);
     --header-bg: var(--secondary);
     --header-link-color: var(--primary-fg);

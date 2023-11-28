@@ -36,14 +36,13 @@ urlpatterns = [
     
     path('add-to-cart/', cart.addtocart, name="addtocart" ),
     path('cart/', cart.viewcart, name="cart"),
+    path('home/',views.home, name='home'),
     path('update-cart/', cart.updatecart, name = "updatecart"),
     path('remove-cart-item/', cart.removecartitem, name="removecartitem"),
-    
     path('wishlist/', wishlist.index, name="wishlist"),
     path('add-to-wishlist/', wishlist.addtowishlist, name="addtowishlist"),
     path('delete-wishlist-item/', wishlist.deletewishlistitem, name="deletewishlistitem"),
-    
-    path('checkout/', checkout.index, name="checkout"),
+    path('checkout/', checkout.index, name="checkout")
 ]
 
 
