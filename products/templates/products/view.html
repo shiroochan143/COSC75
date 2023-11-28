@@ -31,6 +31,7 @@
                         </hr>
                         {% if products.quantity > 0 %}
                             <label class="badge bg-success"> In stock</label>
+                            <label class="badge bg-info "> {{ products.quantity }}</label>
                         {% else %}
                             <label class="badge bg-success"> Out of stock</label>
                         {% endif %}
@@ -50,7 +51,7 @@
                                 {% if products.quantity > 0 %}
                                     <button type="button" class="btn btn-primary me-3 float-start addToCartButton">Add to Cart<i class ="fa fa-shopping-cart"></i></button>
                                 {% endif %}
-                                    <button type="button" class="btn btn-success me-3 float-start">Add to Wishlist<i class ="fa fa-heart"></i></button>
+                                    <button type="button" class="btn btn-success me-3 float-start addToWishlist">Add to Wishlist<i class ="fa fa-heart"></i></button>
                             </div>
                         </div>
                     </div>
@@ -83,6 +84,25 @@
                 data: {
                     'product_id' : product_id,
                     'product_qty' : product_qty,
+                    csrfmiddlewaretoken : token,
+                },
+                success: function (response){
+                    console.log(response)
+                    alertify.success(response.status)
+                }
+            });
+        });
+        $('.addToWishlist').click(function (e) {
+            e.preventDefault();
+    
+            var product_id = $(this).closest('.product_data').find('.prod_id').val();
+            var token = $('input[name="csrfmiddlewaretoken"]').val();
+            
+            $.ajax({
+                method: "POST",
+                url: 'http://localhost:8000/add-to-wishlist/',  // Full URL
+                data: {
+                    'product_id' : product_id,
                     csrfmiddlewaretoken : token,
                 },
                 success: function (response){
