@@ -34,8 +34,8 @@
                                     <h6>USD {{ item.product.selling_price | stringformat:'d'}}</h6>
                                 </div>
                                 <div class="col-md-3 my-auto">
-                                    {% csrf_token %}
                                     <input type="hidden" class="prod_id" value="{{ item.product_id }}" >
+                                    {% csrf_token %}
                                     {% if item.product.quantity >= item.product_qty %}
                                         <label for="Quantity">Quantity</label>
                                         <div class="input-group text-center mb-3" style="width:130px;">
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             {% endfor %}
-                            <a href="{% url 'checkout' %}" class="btn btn-outline-success">Checkout</a>
+                            <a href="{% url 'checkout' %}" class="btn btn-outline-success float-end">Checkout</a>
                         {% else %}
                             <h4>Your Cart is Empty.</h4>
                         {% endif %}
@@ -65,6 +65,32 @@
 <!-- I don't know why this particular piece of code does not work in the custom.js file but works here fine.-->
 <script>
     $(document).ready(function () {
+        $('.increment-btn').click(function (e) {
+            e.preventDefault();
+
+            var inc_value = $(this).closest('.product_data').find('.qty-input');
+            var value = parseInt(inc_value.val(), 10);
+            value = isNaN(value) ? 0 : value;
+
+            if (value < 10) {
+                value = value + 1;
+                inc_value.val(value);
+            }
+        });
+
+        $('.decrement-btn').click(function (e) {
+            e.preventDefault();
+
+            var inc_value = $(this).closest('.product_data').find('.qty-input');
+            var value = parseInt(inc_value.val(), 10);
+            value = isNaN(value) ? 0 : value;
+
+            if (value > 0) { // Change the condition to value > 0 to prevent decrementing below zero
+                value = value -1;
+                inc_value.val(value);
+            }
+        });
+        
         $(document).on('click', '.change-quantity', function(e) {
             e.preventDefault();
         
