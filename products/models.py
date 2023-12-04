@@ -60,3 +60,37 @@ class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    fname = models.CharField(max_length=150, null=False)
+    lname = models.CharField(max_length=150, null=False)
+    email = models.CharField(max_length=150, null=False)
+    phonenumber = models.CharField(max_length=150, null=False)
+    address = models.TextField(max_length=350, null=False)
+    city = models.CharField(max_length=150, null=False)
+    province = models.CharField(max_length=150, null=False)
+    zipcode = models.CharField(max_length=150, null=False)
+    total_price = models.FloatField(null=False)
+    
+    payment_mode = models.CharField(max_length=150, null=False)
+    payment_id = models.CharField(max_length=150, null=True)
+    order_status = ('Order Pending', 'Order Pending'), ('Out for Shipping', 'Out for Shipping'), ('Order Complete', 'Order Complete')
+    status = models.CharField(max_length=150, choices=order_status, default="Pending")
+    message = models.TextField(null=True)
+    tracking_number = models.CharField(max_length=150, null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.id} - {self.tracking_number}"
+    
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    price = models.FloatField(null=False)
+    quantity = models.IntegerField(null=False)
+    
+    def __str__(self):
+        return f"{self.order.id} - {self.order.tracking_number}"
