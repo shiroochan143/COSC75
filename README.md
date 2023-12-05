@@ -7,8 +7,8 @@ To setup the ADD2KART project, here is the following guidelines:
 * Open Project folder on terminal 
 * Prepare your virtual environment <code>python3 -m venv venv</code>
 * Activate your virtual environment:
-* For WinOS: <code>source venv/bin/activate</code>
-* For MacOs: <code>source venv/Scripts/Activate</code>
+* For WinOS: <code>source venv/Scripts/activate</code>
+* For MacOs: <code>source venv/bin/Activate</code>
 * Alternatively, you can deactivate virtual env by typing <code>deactivate</code> in the terminal
 * Install your requirements.txt file <code>pip install -r requirements.txt</code>
 * Create migrations using <code>python3 manage.py makemigrations</code> 
