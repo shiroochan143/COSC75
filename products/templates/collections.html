@@ -1,27 +1,83 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .container {
+        margin-top: 40px; /* Adjusted margin-top */
+    }
+
+    .card-container {
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        background-color: #F3EEEA;  /* Changed background color */
+        box-shadow: 0 0 200px rgba(255, 182, 193, 0.8);  /* Changed pink border to shadow */
+        border-radius: 8px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 
+            0 0 10px rgba(128, 0, 128, 0.8); /* Purple shadow on hover */
+    }
+
+    .category-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 10px;
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h4 {
+        margin-top: 10px;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        color: gray;  /* Changed text color */
+        text-align: center; 
+    }
+
+    h4:hover {
+        text-decoration: none;  /* Added underline on hover */
+    }
+
+</style>
+
 <div class="container">
-   <div class=" row">
-    <div class="col-md-12">
-        <h1>Collections</h1>
-        <div class="row">
-        {% for item in category %}
-            <div class="col-md-4">
-                <div class="card">
-                    <a href="{%url 'view_collections' item.slug %}">
-                        <div class="card-body">
-                            <div class="category-image">
-                                <img src = "{{ item.image.url }}" alt="category-image" class ="w-100"/>
-                            </div>
-                            <h4>{{item.name}}</h4>
-                        </a>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Collections</h1>
+            <div class="row">
+                {% for item in category %}
+                <div class="col-md-4">
+                    <div class="card-container">
+                        <div class="card">
+                            <a href="{% url 'view_collections' item.slug %}" style="text-decoration: none;">
+                                <div class="card-body">
+                                    <div class="category-image">
+                                        <img src="{{ item.image.url }}" alt="category-image" class="w-100" />
+                                    </div>
+                                    <h4>{{ item.name }}</h4>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-        {% endfor %}
         </div>
     </div>
-   </div>
 </div>
 {% endblock content %}

@@ -4,6 +4,55 @@
 
 {% load static %}
 
+<style>
+  .product_data {
+    background-color: #F3EEEA;
+    opacity: 0.8;
+    box-shadow: 0 4px 8px rgba(255, 182, 193, 0.5);
+    transition: box-shadow 0.3s ease;
+    border-radius: 10px;
+    margin-top: 40px;
+    }
+
+    .badge bg-success {
+        background-color: #F3EEEA;   
+
+    }
+
+  .product_data:hover {
+    box-shadow: 0 8px 16px rgba(255, 182, 193, 0.8);
+  }
+
+  .product_viewtag {
+    background-color: gray;
+    opacity: 0.5;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  p {
+    font-style: italic;
+  }
+
+  img {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .selling-price {
+    font-weight: bold;
+    display: block; /* Add this line to make it break into a new line */
+  }
+</style>
+
 <div class="container">
    <div class="row">
     <div class="col-md-12">
@@ -14,7 +63,7 @@
                         {% if products.tag %}
                             <label class="product_viewtag"> {{products.tag}}</label>
                         {% endif %}
-                        <img src = "{{ products.product_image.url }}" class="w-100" alt="image">
+                        <img src="{{ products.product_image.url }}" class="w-100" alt="image">
                     </div>
                     <div class="col-md-8">
                         <h2 class="mb-0">
@@ -24,11 +73,10 @@
                             {% endif %}
                         </h2>
                         <hr>
-                        <label class="me-3">Selling Price: USD {{ products.selling_price | stringformat:'d'}}</label>
                         <p class="mt-3">
                             {{ products.product_description }}
                         </p>
-                        </hr>
+                        <label class="me-3 selling-price">Selling Price: USD {{ products.selling_price | stringformat:'d'}}</label>
                         {% if products.quantity > 0 %}
                             <label class="badge bg-success"> In stock</label>
                             <label class="badge bg-info "> {{ products.quantity }}</label>
@@ -56,48 +104,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <hr>
-                    <h3>Description</h3>
-                    <p class="mt-3">
-                        {{ products.product_description }}
-                    </p>
-                </div>
             </div>
         </div>
     </div>
    </div>
 </div>
-<!-- I don't know why this particular piece of code does not work in the custom.js file but works here fine.-->
+
+<!-- JavaScript code -->
 <script>
     $(document).ready(function () {
-        console.log("Jquery loaded successfully")
-        $('.increment-btn').click(function (e) {
-            e.preventDefault();
-
-            var inc_value = $(this).closest('.product_data').find('.qty-input');
-            var value = parseInt(inc_value.val(), 10);
-            value = isNaN(value) ? 0 : value;
-
-            if (value < 10) {
-                value = value + 1;
-                inc_value.val(value);
-            }
-        });
-
-        $('.decrement-btn').click(function (e) {
-            e.preventDefault();
-
-            var inc_value = $(this).closest('.product_data').find('.qty-input');
-            var value = parseInt(inc_value.val(), 10);
-            value = isNaN(value) ? 0 : value;
-
-            if (value > 0) { // Change the condition to value > 0 to prevent decrementing below zero
-                value = value -1;
-                inc_value.val(value);
-            }
-        });
-
         $('.addToCartButton').click(function (e) {
             e.preventDefault();
     
@@ -139,6 +154,6 @@
             });
         });
     });
-    
 </script>
+
 {% endblock content %}
