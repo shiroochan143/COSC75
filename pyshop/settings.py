@@ -28,9 +28,22 @@ SECRET_KEY = 'grm@_$#@#i$*wm)ct235ln4jg1jxd$^tf&y2wyt5@s%(im)ckr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_USE_SESSIONS = True
+
 ALLOWED_HOSTS = []
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 
+SESSION_COOKIE_SECURE = False
 
+CSRF_COOKIE_SECURE = False
+
+CSRF_COOKIE_HTTPONLY = True
+
+CSRF_COOKIE_SAMESITE = None
+
+SECURE_SSL_REDIRECT = False
+
+CSRF_TRUSTED_ORIGINS = ["http://*.127.0.0.1:8000", "https://*.127.0.0.1:8000", "http://*.localhost:8000", "https://*.localhost:8000"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'products.apps.ProductsConfig',
     'pyshop',
 ]
@@ -52,6 +66,36 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CSRF_COOKIE_DOMAIN = [
+    "http://127.0.0.1:8000",
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "access-control-allow-credentials"
+    "x-requested-with",
 ]
 
 ROOT_URLCONF = 'pyshop.urls'
@@ -134,7 +178,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 #STATICFILES_DIRS = [BASE_DIR.joinpath("static")]
 
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = ["C:\\Users\\Zyruz\\Github Projects\\COSC75\\static"]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 APPEND_SLASH = False
