@@ -14,7 +14,7 @@
 </div>
 
 <div class="container mt-3">
-    <form action="{% url 'placeholder' %}" method="POST">
+    <form action="{% url 'placeorder' %}" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-7">
@@ -25,35 +25,35 @@
                         <div class="row">
                             <div class="col-md-6">
                             <label>First Name</label>
-                            <input type="text" required class="form-control" name="fname" placeholder="Enter First Name">
+                            <input type="text" required value="{{ request.user.first_name }}" class="form-control" name="fname" placeholder="Enter First Name">
                             </div>
                             <div class="col-md-6">
                                 <label>Last Name</label>
-                                <input type="text" required class="form-control" name="lname" placeholder="Enter Last Name">
+                                <input type="text" required value="{{ request.user.last_name }}" class="form-control" name="lname" placeholder="Enter Last Name">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label>Email</label>
-                                <input type="email"  required class="form-control" name="email" placeholder="Enter Email Address">
+                                <input type="email"  required value="{{ request.user.email }}" class="form-control" name="email" placeholder="Enter Email Address">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label>Phone Number</label>
-                                <input type="text" required class="form-control" name="phonenumber" placeholder="Enter Phone Number">
+                                <input type="text" required value="{{ user_profile.phonenumber }}" class="form-control" name="phonenumber" placeholder="Enter Phone Number">
                             </div>
                             <div class="col-md-12 mt-2">
                                 <label>Address</label>
-                                <input type="text" required class="form-control" name="address" placeholder="Enter Address">
+                                <textarea required class="form-control" name="address" placeholder="Enter Address">{{ user_profile.address }} </textarea>
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label>Province</label>
-                                <input type="text" required class="form-control" name="province" placeholder="Enter Province">
+                                <input type="text" required value="{{ user_profile.province }}" class="form-control" name="province" placeholder="Enter Province">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label>City</label>
-                                <input type="text" required class="form-control" name="city" placeholder="Enter City">
+                                <input type="text" required value="{{ user_profile.city }}" class="form-control" name="city" placeholder="Enter City">
                             </div>
                             <div class="col-md-6 mt-2">
                                 <label>ZIP Code</label>
-                                <input type="text" required class="form-control" name="zipcode" placeholder="Enter ZIP code">
+                                <input type="text" required value="{{ user_profile.zipcode }}" class="form-control" name="zipcode" placeholder="Enter ZIP code">
                             </div>
                         </div>                    
                     </div>

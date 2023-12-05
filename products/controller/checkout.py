@@ -2,8 +2,9 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
-from products.models import Product, Cart, Order, OrderItem
+from products.models import Product, Cart, Order, OrderItem, Profile
 import random
 
 @login_required(login_url='loginpage')
@@ -20,12 +21,33 @@ def index(request):
     for item in cart_items:
         total_price = total_price + item.product.selling_price * item.product_qty
         
-    context = {'cart_items' : cart_items, 'total_price' : total_price}
+    user_profile = Profile.objects.filter(user=request.user).first()
+        
+    context = {'cart_items' : cart_items, 'total_price' : total_price, 'user_profile' : user_profile}
     return render(request, "checkout.html", context)
 
 @login_required(login_url='loginpage')
-def placeholder(request):
+def placeorder(request):
     if request.method == "POST":
+        
+        current_user = User.objects.filter(id=request.user.id).first()
+        
+        if not current_user.first_name :
+            current_user.first_name = request.POST.get('fname')
+            current_user.last_name = request.POST.get('lname')
+            current_user.save()
+            
+        if not Profile.objects.filter(user=request.user):
+            user_profile = Profile()
+            user_profile.user = request.user
+            user_profile.phonenumber = request.POST.get("phonenumber")
+            user_profile.address= request.POST.get("address")
+            user_profile.province = request.POST.get("province")
+            user_profile.city = request.POST.get("city")
+            user_profile.zipcode = request.POST.get("zipcode")
+            user_profile.save()
+            
+            
         neworder = Order()
         neworder.user = request.user
         neworder.fname = request.POST.get("fname")

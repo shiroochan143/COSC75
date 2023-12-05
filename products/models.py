@@ -94,3 +94,16 @@ class OrderItem(models.Model):
     
     def __str__(self):
         return f"{self.order.id} - {self.order.tracking_number}"
+    
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phonenumber = models.CharField(max_length=50, null=False)
+    address = models.TextField(null=False)
+    city = models.CharField(max_length=50, null=False)
+    province = models.CharField(max_length=50, null=False)
+    zipcode = models.CharField(max_length=50, null=False)
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.user.username
