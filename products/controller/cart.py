@@ -26,7 +26,7 @@ def addtocart(request):
                 return JsonResponse({'status' : "No such product found"})
         else:
             return JsonResponse({'status' : "Login to Continue"})
-    return redirect('collections')
+    return redirect('/  ')
 
 
 
@@ -38,19 +38,20 @@ def viewcart(request):
 
 
 def updatecart(request):
+    print("cart.py is called")
     if request.method == 'POST':
         prod_id = int(request.POST.get('product_id'))
         if (Cart.objects.filter(user=request.user, product_id=prod_id)):
             prod_qty = int(request.POST.get('product_qty'))
             cart = Cart.objects.get(product_id=prod_id, user=request.user)
-            product_item = Product.objects.get(id=prod_id)
             cart.product_qty = prod_qty
+            product_item = Product.objects.get(id=prod_id)
             if product_item.quantity < cart.product_qty:
                 return JsonResponse({"status" : "Product Quantity exceeds available stock"})
             else:
                 cart.save()
-            return JsonResponse({"status" : "Product Quantity Updated Successfully"})
-    return redirect('collections')           
+                return JsonResponse({"status" : "Product Quantity Updated Successfully"})
+    return redirect('/')           
 
 def removecartitem(request):
     if request.method == "POST" :

@@ -5,6 +5,10 @@ from .models import *
 
 
 # Create your views here.
+def home(request):
+    return render(request,"products/home.html")
+
+
 def index(request):
     # return HttpResponse('Hello World')
     products = Product.objects.all()

@@ -23,6 +23,7 @@ from products.controller import authview, cart, wishlist, checkout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/',views.home, name='home'),
     
     path('products/', include('products.urls')),
     path('collections/', views.collections, name="collections"),
@@ -43,7 +44,8 @@ urlpatterns = [
     path('delete-wishlist-item/', wishlist.deletewishlistitem, name="deletewishlistitem"),
     
     path('checkout/', checkout.index, name="checkout"),
-]
+    path('place-order',checkout.placeholder, name='placeholder'),
+]   
 
 
 if settings.DEBUG:

@@ -3,9 +3,13 @@
 <html lang="en">
   <head>
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <!-- Alertify.js-->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <script>
       $(document).ready(function() {
           console.log("jQuery loaded successfully");
@@ -22,28 +26,26 @@
 
     <!-- Alertify.JS-->
     <!-- CSS -->
+    <link rel="stylesheet" href="{% static '/js/navbar.css' %}">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-    <title>Hello, world!</title>
+    <title>A2K: One Stop K-Shop</title>
   </head>
-  <body style="background: #fdfdfd;">
+  <body style="background: #ffffff;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">PyShop</a>
+      <a class="navbar-brand ml-sm-2" href="/home"> <img src="{% static 'logo draft.svg'%}" height="30" width="30"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+    
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link {% if request.resolver_match.url_name == "collections" %}active{%endif%}" href="{% url 'collections'%}">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/products/new">New Arrivals</a>
           </li>
           <li class="nav-item">
             <a class = "nav-link {% if request.resolver_match.url_name == "cart" %}active{%endif%}" aria-current="page" href="{% url 'cart' %}"> Cart</a>
@@ -57,8 +59,8 @@
                 {{ request.user }}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Account Settings</a>
+                <a class="dropdown-item" href="#">****</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
               </div>
@@ -71,10 +73,10 @@
               <a class="nav-link" href="{% url 'register' %}">Register</a>
             </li>
           {% endif %}
-        </ul>
+        </ul>    
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 10px;">
+          <button class="btn my-2 my-sm-0 mr-sm-0" type="submit"> <img src="{% static 'search icon.svg' %}" class="rounded-circle" width="25" height="25"> </button>
         </form>
       </div>
     </nav>
@@ -85,16 +87,7 @@
         {% endblock %}
     </main>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-      </div>
-    </footer>
 
-    <!-- Alertify.js-->
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     
     <!--The code might have the red underlines but rest assured it is working as intended-->
     <script>
