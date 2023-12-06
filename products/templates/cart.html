@@ -31,7 +31,7 @@
                                     <h6> {{ item.product.name }}</h6>
                                 </div>
                                 <div class="col-md-2 my-auto">
-                                    <h6>USD {{ item.product.selling_price | stringformat:'d'}}</h6>
+                                    <h6>{{ item.product.selling_price | stringformat:'d'}} PHP</h6>
                                 </div>
                                 <div class="col-md-3 my-auto">
                                     <input type="hidden" class="prod_id" value="{{ item.product_id }}" >

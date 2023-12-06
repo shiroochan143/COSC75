@@ -80,7 +80,7 @@
                         <p class="mt-3">
                             {{ products.product_description }}
                         </p>
-                        <label class="me-3 selling-price">Selling Price: USD {{ products.selling_price | stringformat:'d'}}</label>
+                        <label class="me-3 selling-price">Selling Price: {{ products.selling_price | stringformat:'d'}} PHP</label>
                         {% if products.quantity > 0 %}
                             <label class="badge bg-success"> In stock</label>
                             <label class="badge bg-info "> {{ products.quantity }}</label>
