@@ -19,7 +19,7 @@ from products import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-from products.controller import authview, cart, wishlist, checkout
+from products.controller import authview, cart, wishlist, checkout, order
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,6 +46,9 @@ urlpatterns = [
     
     path('checkout/', checkout.index, name="checkout"),
     path('place-order',checkout.placeorder, name='placeorder'),
+    
+    path('my-orders/', order.index, name="myorders"),
+    path('view-order/<str:t_no>', order.vieworder, name="orderview"),
 ]   
 
 
