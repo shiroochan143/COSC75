@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.templatetags.static import static
+from django.utils import timezone
 import datetime
+from datetime import timedelta
 import os
 
 # Create your models here.
@@ -23,8 +25,18 @@ class Category(models.Model):
     meta_description = models.CharField(max_length=500, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
+
     def __str__(self):
         return self.name
+    
     
 class Product(models.Model):
     Category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -46,8 +58,19 @@ class Product(models.Model):
     meta_description = models.CharField(max_length=500, null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
+    
     def __str__(self):
         return self.name
+    
+   
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -55,11 +78,28 @@ class Cart(models.Model):
     product_qty = models.IntegerField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
     
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
     
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -83,8 +123,26 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
+    
     def __str__(self):
         return f"{self.id} - {self.tracking_number}"
+    
+    def formatted_timestamp2(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.updated_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
     
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
@@ -105,5 +163,16 @@ class Profile(models.Model):
     
     created_at = models.DateTimeField(auto_now_add=True)
     
+    def formatted_timestamp(self):
+        # Convert the timestamp to the local timezone
+        local_offset = timedelta(hours=8)  # Replace with your actual offset
+
+        # Apply the offset to the timestamp
+        local_time = self.created_at + local_offset
+        # Format the timestamp as a string
+        return local_time.strftime('%Y-%m-%d %I:%M:%S %p')
+    
     def __str__(self):
         return self.user.username
+    
+    

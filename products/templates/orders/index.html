@@ -35,7 +35,7 @@
                                 <tbody>
                                     {% for item in orders %}
                                         <tr>
-                                            <td>{{ item.created_at }}</td>
+                                            <td>{{ item.formatted_timestamp }}</td>
                                             <td>{{ item.tracking_number }}</td>
                                             <td>{{ item.total_price }}</td>
                                             <td>{{ item.status }}</td>

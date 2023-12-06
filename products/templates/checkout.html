@@ -87,14 +87,11 @@
                                 </tbody>
                             </table>
                             <h6 class"fw-bold">Total Amount
-                                <span class="float-end">{{ total_price | stringformat:'.2f'}} USD</span>
+                                <span class="float-end">{{ total_price | stringformat:'.2f'}} PHP</span>
                             </h6>
                             <input type = "hidden" value="COD" name="payment_mode">
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-success w-100"> Cash on Delivery</button>
-                            </div>
-                            <div class="mt-3">
-                                <button type="submit" class="btn btn-success w-100"> G-Cash </button>
                             </div>
                         {% else %}
                             <h4>Your Cart is Empty, pleash shop first!</h4>

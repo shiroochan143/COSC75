@@ -28,6 +28,15 @@ SECRET_KEY = 'grm@_$#@#i$*wm)ct235ln4jg1jxd$^tf&y2wyt5@s%(im)ckr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+TIME_ZONE = 'Asia/Singapore'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
 CSRF_USE_SESSIONS = True
 
 ALLOWED_HOSTS = []
