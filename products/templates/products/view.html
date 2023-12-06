@@ -63,9 +63,9 @@
                         {% if products.tag %}
                             <label class="product_viewtag"> {{products.tag}}</label>
                         {% endif %}
-                        {% if products.product_image %}:
+                        {% if products.product_image %}
                             <img src="{{ products.product_image.url }}" class="w-100" alt="image">
-                        {% else %}:
+                        {% else %}
                             <img src="{% static 'NIP.png' %}" class="w-100" alt="image">
                         {% endif %}
                     </div>

@@ -44,6 +44,9 @@
             <a class="nav-link {% if request.resolver_match.url_name == "home" %}active{%endif%}" href="{% url 'home'%}">Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == "viewallproducts" %}active{%endif%}" href="{% url 'viewallproducts'%}">All Products</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link {% if request.resolver_match.url_name == "collections" %}active{%endif%}" href="{% url 'collections'%}">Shop</a>
           </li>
           <li class="nav-item">

@@ -26,10 +26,10 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('home/',views.home, name='home'),
     
-    path('products/', include('products.urls')),
     path('collections/', views.collections, name="collections"),
     path('collections/<str:slug>', views.view_collections, name="view_collections"),
     path('collections/<str:category_slug>/<str:product_slug>', views.view_products, name='view_products'),
+    path('all-products/', views.view_all_products, name="viewallproducts"),
     
     path('register/', authview.register, name="register"),
     path('login/', authview.loginpage, name="loginpage"),

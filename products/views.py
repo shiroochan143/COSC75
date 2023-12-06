@@ -8,15 +8,6 @@ from .models import *
 def home(request):
     return render(request,"products/home.html")
 
-
-def index(request):
-    products = Product.objects.all()
-    return render(request, 'index.html',
-                  {'products': products})
-
-def new(request):
-    return HttpResponse('Welcome to PyShop New Arrivals')
-
 def collections(request):
     category = Category.objects.filter(status=0)
     context = {'category' : category}
@@ -39,7 +30,7 @@ def view_products(request, category_slug, product_slug):
             context = {"products" : products}
 
         else:
-            messages.error(request, "No category found")
+            messages.error(request, "No product found")
             return redirect('collections')
     else:
         messages.error(request, "No category found")
@@ -47,6 +38,15 @@ def view_products(request, category_slug, product_slug):
     
     return render(request, "products/view.html", context)
 
+def view_all_products(request):
+    if (Product.objects.filter(status=0)):
+        products = Product.objects.filter(status=0)
+        context = {"products" : products}
+    else:
+        messages.error(request, "No product found")
+        return redirect('home')
+    
+    return render(request, "products/view-all-products.html", context)
 
 def java_script(request):
     filename = request.path.strip("/")

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .container {
+        margin-top: 40px;
+    }
+
+    .card {
+        background-color: #F3EEEA;
+        box-shadow: 0 0 200px rgba(255, 182, 193, 0.8);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+        width: 100%;
+    }
+
+    .card:hover {
+        box-shadow: 
+            0 0 10px rgba(128, 0, 128, 0.8); /* Purple shadow on hover */
+    }
+
+    .category-image img {
+        width: 100%; /* Stretch the image to fit the card */
+        height: 100%; /* Stretch the image to fit the card */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+        border-radius: 10px;
+    }
+
+    .card-body {
+        padding: 10px;
+        text-align: center; /* Center text */
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    h4 {
+        margin-top: 10px;
+        font-size: 18px;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        color: gray;
+        text-align: center;
+    }
+
+    h4:hover {
+        text-decoration: none;
+    }
+
+    a {
+    text-decoration: none !important; /* Remove underline for anchor tags */
+    }
+
+    span {
+        display: block; /* Separate price from product name */
+        font-weight: bold;
+        color: gray; /* Adjusted price color */
+    }
+</style>
+
+<div class="container">
+   <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+        {% for item in products %}
+            <div class="col-md-4">
+                <div class="card">
+                    <a href="{% url 'viewallproducts'%}">
+                        <div class="card-body">
+                            <div class="category-image">
+                                {% load static %}
+                                {% if item.product_image %}
+                                    <img src="{{ item.product_image.url }}" alt="product-image" class="w-100" />
+                                {% else %}
+                                    <img src="{% static 'NIP.png' %}" alt="default-image" class="w-100" />
+                                {% endif %}
+                            </div>
+                            <h4>{{item.name}}</h4>
+                            <span>{{item.selling_price}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+   </div>
+</div>
+{% endblock content %}
