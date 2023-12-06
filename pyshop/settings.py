@@ -178,7 +178,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 #STATICFILES_DIRS = [BASE_DIR.joinpath("static")]
 
-STATICFILES_DIRS = ["C:\\Users\\Zyruz\\Github Projects\\COSC75\\static"]
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 APPEND_SLASH = False

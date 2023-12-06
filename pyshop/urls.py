@@ -23,6 +23,7 @@ from products.controller import authview, cart, wishlist, checkout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
     path('home/',views.home, name='home'),
     
     path('products/', include('products.urls')),
