@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.templatetags.static import static
 import datetime
 import os
 
@@ -36,7 +37,6 @@ class Product(models.Model):
     original_price = models.FloatField(null=False, blank=False) 
     selling_price = models.FloatField(null=False, blank=False)
     
-
     status = models.BooleanField(default=False, help_text='0=default, 1=Hidden')
     trending = models.BooleanField(default=False, help_text="0=default, 1=Trending")
     tag = models.CharField(max_length=150, null=False, blank=False)

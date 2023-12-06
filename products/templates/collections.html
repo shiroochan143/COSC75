@@ -26,8 +26,9 @@
     }
 
     .category-image img {
-        max-width: 100%;
-        height: auto;
+        width: 100%; /* Stretch the image to fit the card */
+        height: 100%; /* Stretch the image to fit the card */
+        object-fit: cover; /* Maintain aspect ratio and cover the entire container */
         border-radius: 10px;
     }
 
@@ -67,7 +68,12 @@
                             <a href="{% url 'view_collections' item.slug %}" style="text-decoration: none;">
                                 <div class="card-body">
                                     <div class="category-image">
-                                        <img src="{{ item.image.url }}" alt="category-image" class="w-100" />
+                                        {% load static %}
+                                        {% if item.image%}
+                                            <img src="{{ item.image.url }}" alt="category-image" class="w-100" />
+                                        {% else %}
+                                            <img src="{% static 'NIP.svg' %}" alt="default-image" class="w-100" />
+                                        {% endif %}
                                     </div>
                                     <h4>{{ item.name }}</h4>
                                 </div>
