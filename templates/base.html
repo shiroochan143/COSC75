@@ -77,7 +77,10 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="border-radius: 10px;">
           <button class="btn my-2 my-sm-0 mr-sm-0" type="submit"> <img src="{% static 'search icon.svg' %}" class="rounded-circle" width="25" height="25"> </button>
         </form>
-        <button class="btn my-2 my-sm-0 mr-sm-0 " type="button"> <img src="{% static 'light-mode.svg' %}" class="rounded-circle svg-mode" width="18" height= "18"/></button>
+        <button id="mode-toggle" class="btn my-2 my-sm-0 mr-sm-0" type="button">
+          <img id="mode-icon" src="{% static 'light-mode.svg' %}" class="rounded-circle" width="18" height="18" style="fill: #dc93ff" />
+        </button>
+        
       </div>
     </nav>
 
@@ -87,9 +90,13 @@
         {% endblock %}
     </main>
 
-
     
     <!--The code might have the red underlines but rest assured it is working as intended-->
+    <script src="{% static 'js/eye-mode.js' %}" defer></script>
+    <script>
+      window.staticDarkModePath = "{% static 'dark-mode.svg' %}";
+      window.staticLightModePath = "{% static 'light-mode.svg' %}";
+    </script>
     <script>
       alertify.set('notifier', 'position', 'top-right');
       {% for msg in messages %}
