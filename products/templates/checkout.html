@@ -4,6 +4,112 @@
 
 {% load static %}
 
+<style>
+    .py-3 {
+        background-color: #FFB6C1;
+    }
+
+    .py-3 a {
+        color: white;
+        text-decoration: none;
+        margin: 0 5px;
+        font-weight: bold;
+    }
+
+    .py-3 a:hover {
+        text-decoration: none;
+    }
+
+    .container {
+        margin-top: 0px;
+    }
+
+    .checkout-details,
+    .checkout-details1 {
+        box-shadow: 0 0 20px rgb(252, 211, 217);
+        border-radius: 10px;
+        border: 0px solid #D9ACF5;
+        margin-bottom: 40px;
+        transition: box-shadow 0.3s ease;
+        row-gap: 10px;
+    }
+
+    .checkout-form {
+        padding: 10px;
+    }
+
+    .checkout-form h6 {
+        font-weight: bold;
+        font-size: 20px;
+        color: #2b2728;
+    }
+
+    .checkout-form hr {
+        border-color: #FFB6C1;
+    }
+
+    .checkout-form label {
+        color: #2b2728;
+        font-weight: bold;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+        border: 0px solid #FFB6C1;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background-color: #ffedf0;
+    }
+
+    .checkout-form textarea {
+        height: 40px;
+        border: #FFB6C1;
+    }
+    .checkout-form textarea:active{
+        border: #FFB6C1
+    }
+    .checkout-form button {
+        background-color: #bcff9e;
+        color: white;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .checkout-form button:hover {
+        background-color: #86b371;
+        text-decoration: none;
+    }
+
+    .order-summary h6 {
+        font-weight: bold;
+        font-size: 20px;
+        color: #2b2728;
+    }
+
+    .order-summary hr {
+        border-color: #FFB6C1;
+    }
+
+    .order-summary table {
+        margin-top: 10px;
+    }
+
+    .order-summary th,
+    .order-summary td {
+        color: #776B5D;
+        font-weight: bold;
+    }
+
+    .order-summary img {
+        margin-right: 10px;
+    }
+
+    .order-summary .float-end {
+        font-weight: bold;
+        font-size: larger;
+    }
+</style>
+
 <!-- Navbar Containter-->
 <div class="py-3 bg-primary">
     <div class="containter">
@@ -17,8 +123,8 @@
     <form action="{% url 'placeorder' %}" method="POST">
         {% csrf_token %}
         <div class="row">
-            <div class="col-md-7">
-                <div class="card shadow checkout-form">
+            <div class="checkout-details col-md-6 mt-3 mr-4">
+                <div class="checkout-form">
                     <div class="card-body">
                         <h6>Basic Details</h6>
                         <hr>
@@ -39,7 +145,7 @@
                                 <label>Phone Number</label>
                                 <input type="text" required value="{{ user_profile.phonenumber }}" class="form-control" name="phonenumber" placeholder="Enter Phone Number">
                             </div>
-                            <div class="col-md-12 mt-2">
+                            <div class="col-md-10 mt-2">
                                 <label>Address</label>
                                 <textarea required class="form-control" name="address" placeholder="Enter Address">{{ user_profile.address }} </textarea>
                             </div>
@@ -59,8 +165,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
-                <div class="card shadow">
+            <div class="checkout-details1 col-md-5 mt-3 ml-4">
                     <div class="card-body">
                         <h6>Order Summary </h6>
                         <hr>

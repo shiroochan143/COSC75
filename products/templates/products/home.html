@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 {% load static %}
+
+<style>
+    .card{
+        background: #FFF;
+        border-width: 0px;
+        border-radius: 20px;
+        box-shadow: 0px 0px 75px 3px rgb(243, 194, 255, 0.5);
+    }
+
+    .card-body{
+        color: rgb(73, 73, 73);
+    }
+
+
+</style>
 
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -43,7 +59,7 @@
   <div class="row justify-content-start">
       <div class="col-sm-3 my-4">
           <a href="Albums" class="text-decoration-none">
-              <div class="card h-100" style="border-radius: 15px; background: #FFF; box-shadow: 0px 0px 75px 3px rgba(243, 194, 255, 0.45);">
+              <div class="card h-100">
                   <img src="{% static 'Albums.png'%}" class="card-img-top" alt="Albums">
                   <div class="card-body text-center">
                       <p class="font-weight-bold">Albums</p>
@@ -54,7 +70,7 @@
 
       <div class="col-sm-3 my-4">
           <a href="Photobooks" class="text-decoration-none">
-              <div class="card h-100" style="border-radius: 15px; background: #FFF; box-shadow: 0px 0px 75px 3px rgba(243, 194, 255, 0.45);">
+              <div class="card">
                   <img src="{% static 'Photobooks.png'%}" class="card-img-top" alt="Photobooks">
                   <div class="card-body text-center">
                       <p class="font-weight-bold">Photobooks</p>
@@ -65,7 +81,7 @@
 
       <div class="col-sm-3 my-4">
           <a href="Lightsticks" class="text-decoration-none">
-              <div class="card h-100" style="border-radius: 15px; background: #FFF; box-shadow: 0px 0px 75px 3px rgba(243, 194, 255, 0.45);">
+              <div class="card">
                   <img src="{% static 'Lightsticks.png'%}" class="card-img-top" alt="Lightsticks">
                   <div class="card-body text-center">
                       <p class="font-weight-bold">Lightsticks</p>
@@ -76,7 +92,7 @@
 
       <div class="col-sm-3 my-4">
           <a href="Seasons Greeting" class="text-decoration-none">
-              <div class="card h-100" style="border-radius: 15px; background: #FFF; box-shadow: 0px 0px 75px 3px rgba(243, 194, 255, 0.45);">
+              <div class="card">
                   <img src="{% static 'Seasons Greetings.png'%}" class="card-img-top" alt="Season's Greetings">
                   <div class="card-body text-center">
                       <p class="font-weight-bold">Season's Greetings</p>
@@ -87,7 +103,7 @@
 
       <div class="col-sm-3 my-4">
           <a href="Other Merch" class="text-decoration-none">
-              <div class="card h-100" style="border-radius: 15px; background: #FFF; box-shadow: 0px 0px 75px 3px rgba(243, 194, 255, 0.45);">
+              <div class="card">
                   <img src="{% static 'Other Merch.png'%}" class="card-img-top" alt="Other Merch">
                   <div class="card-body text-center">
                       <p class="font-weight-bold">Other Merch</p>

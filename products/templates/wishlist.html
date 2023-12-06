@@ -4,6 +4,77 @@
 
 {% load static %}
 
+<style>
+    .container {
+        margin-top: 10px;
+    }
+
+    .card-shadow {
+        box-shadow: 0 0 20px rgb(255, 182, 193, 0.5);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .card-shadow:hover {
+        box-shadow: 0 0 50px rgba(255, 144, 255, 0.8);
+    }
+
+    .wishlist_data {
+        padding: 20px;
+    }
+
+    .product_data {
+        border-bottom: 1px solid #ffffff;
+        padding: 15px 0;
+    }
+
+    .product_data img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .product_data h6 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(97, 97, 97);
+    }
+
+    .product_data h6 span {
+        font-weight: normal;
+    }
+
+    .product_data .btn-primary,
+    .product_data .btn-danger {
+        font-weight: bold;
+        padding: 10px 20px;
+        color: white;
+        transition: background-color 0.3s ease;
+        border-radius: 12px;
+    }
+
+    .product_data .btn-primary {
+        background-color: #e5b9ff;
+        border: none;
+    }
+
+    .product_data .btn-danger {
+        background-color: #FFB9B9;
+        border: none;
+    }
+
+    .product_data .btn-primary:hover{
+        background-color: #ca8cdd;
+        text-decoration: none;
+    }
+    .product_data .btn-danger:hover {
+        background-color: #e47575;
+        text-decoration: none;
+    }
+</style>
+
 <!-- Navbar Containter-->
 <div class="py-3 bg-primary">
     <div class="containter">
@@ -37,7 +108,7 @@
                                     {% csrf_token %}
                                     <input type="hidden" class="prod_id" value="{{ item.product_id }}" >
                                     <a href="{% url 'view_products' item.product.Category.slug item.product.slug%}" class="btn btn-primary">
-                                        <i class="fa fa-eye">View Product</i>
+                                        <i class="fa-fa-eye">View Product</i>
                                     </a>
                                 </div>
                                 <div class="col-md-2 my-auto">
