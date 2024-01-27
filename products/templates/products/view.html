@@ -192,7 +192,7 @@
             var token = $('input[name="csrfmiddlewaretoken"]').val();
             
             $.ajax({
-                url: 'http://localhost:8000/add-to-cart/',  // Full URL
+                url: 'http://127.0.0.1:8000/add-to-cart/',  // Full URL
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
@@ -218,7 +218,7 @@
             
             $.ajax({
                 method: "POST",
-                url: 'http://localhost:8000/add-to-wishlist/',  // Full URL
+                url: 'http://127.0.0.1:8000/add-to-wishlist/',  // Full URL
                 data: {
                     'product_id' : product_id,
                     csrfmiddlewaretoken : token,
